@@ -200,19 +200,19 @@ namespace Umbraco.ModelsBuilder.Building
             // write out strong type GetPropertyValue methods
             sb.AppendFormat("\t\tpublic TValue GetPropertyValue<TValue>(Expression<Func<{0}, TValue>> selector)\n",
                 type.ClrName);
-            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<T>(PublishedContentModelUtility.GetModelPropertyAlias(property));\n\t\t}\n");
+            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<TValue>(PublishedContentModelUtility.GetModelPropertyAlias(property));\n\t\t}\n");
 
-            sb.AppendFormat("\t\tpublic TValue GetPropertyValue<TValue>(Expression<Func<{0}, TValue>> selector, bool recurse))\n",
+            sb.AppendFormat("\t\tpublic TValue GetPropertyValue<TValue>(Expression<Func<{0}, TValue>> selector, bool recurse)\n",
                 type.ClrName);
-            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<T>(PublishedContentModelUtility.GetModelPropertyAlias(property), recurse);\n\t\t}\n");
+            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<TValue>(PublishedContentModelUtility.GetModelPropertyAlias(property), recurse);\n\t\t}\n");
 
             sb.AppendFormat("\t\tpublic TValue GetPropertyValue<TValue>(Expression<Func<{0}, TValue>> selector, TValue defaultValue)\n",
                 type.ClrName);
-            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<T>(PublishedContentModelUtility.GetModelPropertyAlias(property), defaultValue);\n\t\t}\n");
+            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<TValue>(PublishedContentModelUtility.GetModelPropertyAlias(property), defaultValue);\n\t\t}\n");
 
             sb.AppendFormat("\t\tpublic TValue GetPropertyValue<TValue>(Expression<Func<{0}, TValue>> selector, bool recurse, TValue defaultValue)\n",
                 type.ClrName);
-            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<T>(PublishedContentModelUtility.GetModelPropertyAlias(property), recurse, defaultValue);\n\t\t}\n");
+            sb.Append("\t\t{\n\t\t\treturn this.GetPropertyValue<TValue>(PublishedContentModelUtility.GetModelPropertyAlias(property), recurse, defaultValue);\n\t\t}\n");
 
             // write the properties
             WriteContentTypeProperties(sb, type);
