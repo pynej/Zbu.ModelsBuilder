@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Umbraco.Core.Models;
 using Umbraco.Core.Models.PublishedContent;
 
 namespace Umbraco.ModelsBuilder.Umbraco
@@ -24,13 +25,13 @@ namespace Umbraco.ModelsBuilder.Umbraco
         //}
 
         public static PublishedPropertyType GetModelPropertyType<TModel, TValue>(PublishedContentType contentType, Expression<Func<TModel, TValue>> selector)
-            where TModel : PublishedContentModel
+            where TModel : IPublishedContent
         {
             return contentType.GetPropertyType(GetModelPropertyAlias(selector));
         }
 
         public static string GetModelPropertyAlias<TModel, TValue>(Expression<Func<TModel, TValue>> selector)
-            where TModel : PublishedContentModel
+            where TModel : IPublishedContent
         {
             var expr = selector.Body as MemberExpression;
 
